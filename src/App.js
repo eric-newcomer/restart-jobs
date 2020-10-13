@@ -6,11 +6,11 @@ import { BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
-    // <Router>
+    <Router>
       <div className="App">
         <Navigation />
       </div>
-    // </Router>
+    </Router>
   );
 }
 
