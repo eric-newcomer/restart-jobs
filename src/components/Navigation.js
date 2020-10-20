@@ -13,7 +13,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">Jails2Jobs</Link>
+        <Link to="/" className="navbar-brand">Restart</Link>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
@@ -25,10 +25,10 @@ export default class Navigation extends Component {
           </ul>
           <ul className="navbar-nav navbar-right">
             <li className="navbar-item">
-              <Link to="/" className="nav-link">Profile</Link>
+              <Link to="/profile" className="nav-link">Profile</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/community" className="nav-link">Settings</Link>
+              <Link to="/settings" className="nav-link">Settings</Link>
             </li>
           </ul>
         </div>
