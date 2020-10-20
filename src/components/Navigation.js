@@ -23,6 +23,14 @@ export default class Navigation extends Component {
               <Link to="/community" className="nav-link">Community</Link>
             </li>
           </ul>
+          <ul className="navbar-nav navbar-right">
+            <li className="navbar-item">
+              <Link to="/" className="nav-link">Profile</Link>
+            </li>
+            <li className="navbar-item">
+              <Link to="/community" className="nav-link">Settings</Link>
+            </li>
+          </ul>
         </div>
       </nav>
     );
