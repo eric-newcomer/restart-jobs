@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const User = require('./models/user.model');
+const Opportunity = require('./models/opportunity.model');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.get('/api/users', (req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
 });
 
+// USER APIS
 // POST: Add new user
 app.post('/api/users/add', (req, res) => {
    const username = req.body.username;
@@ -40,6 +42,32 @@ app.post('/api/users/add', (req, res) => {
 
    newUser.save()
       .then(() => res.json('User added successfully!'))
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
+// OPPORTUNITY APIS
+// GET: Get all opportunities
+app.get('/api/opportunities', (req, res) => {
+   Opportunity.find()
+      .then(opps => res.json(opps))
+      .catch(err => res.status(400).json("Error: " + err));
+});
+
+// POST: Add new opportunity
+app.post('/api/opportunities/add', (req, res) => {
+   const opportunityTitle = req.body.opportunityTitle;
+   const companyName = req.body.companyName;
+   const description = req.body.description;
+
+   const newOpp = Opportunity({
+      opportunityTitle: opportunityTitle, 
+      companyName: companyName, 
+      description: description,
+   });
+
+   newOpp.save()
+      .then(() => res.json('Opportunity added successfully!'))
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
