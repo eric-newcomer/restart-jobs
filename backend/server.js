@@ -32,17 +32,6 @@ connection.once('open', () => {
 })
 
 
-// LOGIN
-app.post('/login', (req, res) => {
-   // Authenticate user
-   const username = req.body.username;
-
-
-
-   jwt.sign()
-
-})
-
 // Routes
 const usersRouter = require('./routes/users');
 const opportunitiesRouter = require('./routes/opportunities');
