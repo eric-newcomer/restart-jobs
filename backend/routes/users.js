@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const router = require('express').Router();
 let User = require('../models/user.model');
-
+require('dotenv').config()
 
 // GET: Get all users
 router.route('/').get((req, res) => {
@@ -10,7 +11,7 @@ router.route('/').get((req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
 });
 
-// POST: Add new user
+// POST: USER REGISTRATION
 router.route('/register').post( async (req, res) => {
    try {
       let { email, password, passwordCheck, displayName} = req.body;
@@ -49,7 +50,46 @@ router.route('/register').post( async (req, res) => {
          displayName
       });
       const savedUser = await newUser.save();
+      console.log("User successfully registered!");
       res.json(savedUser);
+   } catch (err) {
+      res.status(500).json({ 
+         error: err.message
+      });
+   }
+});
+
+// POST: USER LOGIN
+router.route('/login').post( async (req, res) => {
+   try {
+      const { email, password } = req.body;
+      // validate
+      if (!email || !password) {
+         return res.status(400).json({
+            msg: "Not all fields have been entered."
+         });
+      }
+      const user = await User.findOne({ email: email});
+      if (!user) {
+         return res.status(400).json({
+            msg: "No account with this email has been registered."
+         });
+      }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+         return res.status(400).json({
+            msg: "Invalid credentials."
+         });
+      }
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      console.log('Login successful!');
+      res.json({
+         token,
+         user: {
+            id: user._id,
+            displayName: user.displayName
+         }
+      });
    } catch (err) {
       res.status(500).json({ 
          error: err.message

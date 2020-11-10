@@ -16,6 +16,16 @@ content-type: application/json
 
 ###
 
+POST http://localhost:5000/users/login/ 
+content-type: application/json
+
+{
+   "email": "eric@gmail.com",
+   "password": "test123"
+}
+
+###
+
 // OPPORTUNITIES
 GET http://localhost:5000/opportunities
 
