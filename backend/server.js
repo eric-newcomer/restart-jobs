@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
 require('dotenv').config();
 
 const User = require('./models/user.model');
@@ -14,9 +16,14 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, 
-                        useCreateIndex: true,
-                        useUnifiedTopology: true});
+mongoose.connect(uri, 
+   { useNewUrlParser: true, 
+      useCreateIndex: true,
+      useUnifiedTopology: true
+   },
+   (err) => {
+      if (err) throw err;
+});
 
 const connection = mongoose.connection;
 
@@ -24,52 +31,23 @@ connection.once('open', () => {
    console.log("MongoDB database connection established successfully!");
 })
 
-// GET: Get all users
-app.get('/api/users', (req, res) => {
-   User.find()
-      .then(users => res.json(users))
-      .catch(err => res.status(400).json("Error: " + err));
-});
 
-// USER APIS
-// POST: Add new user
-app.post('/api/users/add', (req, res) => {
+// LOGIN
+app.post('/login', (req, res) => {
+   // Authenticate user
    const username = req.body.username;
-   const firstName = req.body.firstName;
-   const lastName = req.body.lastName;
-
-   const newUser = User({username, firstName, lastName});
-
-   newUser.save()
-      .then(() => res.json('User added successfully!'))
-      .catch(err => res.status(400).json('Error: ' + err));
-});
 
 
-// OPPORTUNITY APIS
-// GET: Get all opportunities
-app.get('/api/opportunities', (req, res) => {
-   Opportunity.find()
-      .then(opps => res.json(opps))
-      .catch(err => res.status(400).json("Error: " + err));
-});
 
-// POST: Add new opportunity
-app.post('/api/opportunities/add', (req, res) => {
-   const opportunityTitle = req.body.opportunityTitle;
-   const companyName = req.body.companyName;
-   const description = req.body.description;
+   jwt.sign()
 
-   const newOpp = Opportunity({
-      opportunityTitle: opportunityTitle, 
-      companyName: companyName, 
-      description: description,
-   });
+})
 
-   newOpp.save()
-      .then(() => res.json('Opportunity added successfully!'))
-      .catch(err => res.status(400).json('Error: ' + err));
-});
+// Routes
+const usersRouter = require('./routes/users');
+const opportunitiesRouter = require('./routes/opportunities');
+app.use('/users', usersRouter);
+app.use('/opportunities', opportunitiesRouter);
 
 app.listen(port, () => {
    console.log(`Server is running on port: ${port}`);

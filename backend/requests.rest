@@ -8,9 +8,9 @@ POST http://localhost:5000/users/register/
 content-type: application/json
 
 {
-   "email": "enewcomer23@gmail.com",
-   "password": "emily123",
-   "passwordCheck": "emily123",
+   "email": "eric@gmail.com",
+   "password": "test123",
+   "passwordCheck": "test123",
    "displayName": "Eric Newcomer"
 }
 
