@@ -1,0 +1,31 @@
+
+// USERS
+GET http://localhost:5000/users
+
+###
+
+POST http://localhost:5000/users/register/ 
+content-type: application/json
+
+{
+   "email": "enewcomer23@gmail.com",
+   "password": "emily123",
+   "passwordCheck": "emily123",
+   "displayName": "Eric Newcomer"
+}
+
+###
+
+// OPPORTUNITIES
+GET http://localhost:5000/opportunities
+
+###
+
+POST http://localhost:5000/opportunities/add/ 
+content-type: application/json
+
+{
+   "opportunityTitle": "Store Clerk",
+   "companyName": "Ralph's",
+   "description": "You will be a store clerk!"
+}
