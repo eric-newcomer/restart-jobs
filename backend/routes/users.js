@@ -1,8 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const router = require('express').Router();
+require('dotenv').config();
+
+const auth = require("../middleware/auth");
 let User = require('../models/user.model');
-require('dotenv').config()
+
 
 // GET: Get all users
 router.route('/').get((req, res) => {
@@ -92,6 +95,18 @@ router.route('/login').post( async (req, res) => {
       });
    } catch (err) {
       res.status(500).json({ 
+         error: err.message
+      });
+   }
+});
+
+// DELETE: Delete a user
+router.route('/delete').delete(auth, async (req, res) => {
+   try {
+      const deletedUser = await User.findByIdAndDelete(req.user);
+      res.json(deletedUser);
+   } catch (err) {
+      res.status(500).json({
          error: err.message
       });
    }

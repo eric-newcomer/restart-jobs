@@ -16,6 +16,18 @@ content-type: application/json
 
 ###
 
+DELETE http://localhost:5000/users/delete/ 
+content-type: application/json
+
+{
+   "email": "emily@gmail.com",
+   "password": "test123",
+   "passwordCheck": "test123",
+   "displayName": "Emily Newcomer"
+}
+
+###
+
 POST http://localhost:5000/users/login/ 
 content-type: application/json
 
