@@ -6,10 +6,13 @@ export default class Login extends Component {
    render() {
       return (
          <>
-         <h1>Login</h1>
-         <br />
-         <Container>
-            <Form style={{marginLeft:'25%', marginRight:'25%'}}>
+         <Container style={{marginTop: '10%', height:"100%"}}>
+            <h1>Restart Jobs</h1>
+            <br/>
+            <h2>Login</h2>
+            <br />
+            
+            <Form style={{marginLeft:'25%', marginRight:'25%', marginBottom:'20%'}}>
                <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" placeholder="Enter email" />
@@ -29,7 +32,9 @@ export default class Login extends Component {
                   Submit
                </Button>
             </Form>
+            <br/>
          </Container>
+         
          </>
       )
    }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Button, Row, Col, Form} from 'react-bootstrap';
+import Navigation from "./Navigation";
+
 
 export default class Community extends Component {
    render() {

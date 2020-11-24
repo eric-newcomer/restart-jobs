@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Button, Row, Col, Form} from 'react-bootstrap';
+import Navigation from "./Navigation";
+
 
 import logo from "../images/logo192.png";
 
@@ -7,6 +9,7 @@ export default class Home extends Component {
    render() {
       return (
          <>
+         <Navigation />
          <h1>Find Jobs</h1>
          <div className="Container">
          <Form>

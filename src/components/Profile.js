@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Button, Row, Col, Form, Container} from 'react-bootstrap';
+import Navigation from "./Navigation";
+
 
 import profile_pic from "../images/IMG_1448.jpg";
 
