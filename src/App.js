@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Community from "./components/Community";
 import Profile from "./components/Profile";
 import Settings from "./components/Settings";
+import Login from "./components/auth/Login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="App">
         <Navigation />
         <br />
+        <Login />
         <Route path="/" exact component={Home} />
         <Route path="/community" exact component={Community} />
         <Route path="/profile" exact component={Profile} />
