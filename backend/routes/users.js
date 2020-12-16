@@ -7,11 +7,11 @@ const auth = require("../middleware/auth");
 let User = require("../models/user.model");
 
 // GET: Get all users
-router.route("/").get((req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
+// router.route("/").get((req, res) => {
+//   User.find()
+//     .then((users) => res.json(users))
+//     .catch((err) => res.status(400).json("Error: " + err));
+// });
 
 // POST: USER REGISTRATION
 router.route("/register").post(async (req, res) => {
@@ -114,22 +114,30 @@ router.route("/delete").delete(auth, async (req, res) => {
 
 // Check if token is valid: returns true or false
 router.route("/isTokenValid").post(async (req, res) => {
-   try {
-      const token = req.header("x-auth-token");
-      if (!token) return res.json(false);
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
 
-      const verified = jwt.verify(token, process.env.JWT_SECRET);
-      if (!verified) return res.json(false);
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    if (!verified) return res.json(false);
 
-      const user = await User.findById(verified.id);
-      if (!user) return res.json(false);
-      console.log(user.email);
-      return res.json(true);
-   } catch (err) {
-      res.status(500).json({
-        error: err.message,
-      });
-   }
-})
+    const user = await User.findById(verified.id);
+    if (!user) return res.json(false);
+    console.log(user.email);
+    return res.json(true);
+  } catch (err) {
+    res.status(500).json({
+      error: err.message,
+    });
+  }
+});
+
+router.route("/").get(auth, async (req, res) => {
+  const user = await User.findById(req.user);
+  res.json({
+    displayName: user.displayName,
+    id: user._id,
+  });
+});
 
 module.exports = router;

@@ -29,14 +29,16 @@ function App() {
       const tokenResponse = await axios.post(
         "http://localhost:5000/users/isTokenValid/",
         null,
-        {
-          headers: {
-            "x-auth-token": token,
-          },
-        }
+        { headers: { "x-auth-token": token } }
       );
       if (tokenResponse.data) {
-        
+        const userResponse = await axios.get("http://localhost:5000/users/", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userResponse.data,
+        });
       }
     };
 
