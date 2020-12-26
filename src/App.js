@@ -1,63 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import axios from "axios";
-
-import Home from "./components/Home";
-import Community from "./components/Community";
-import Profile from "./components/Profile";
-import Settings from "./components/Settings";
-import Login from "./components/auth/Login";
-import PrivateRoute from "./components/PrivateRoute";
-import Navigation from "./components/Navigation";
-import UserContext from "./context/UserContext";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Route, Switch } from 'react-router-dom';
 
 import "./App.css";
+import Feed from "./components/Feed";
+import Header from "./components/Header";
+import Widgets from "./components/Widgets";
+import Sidebar from "./components/Sidebar";
+import Login from "./components/Login";
+import { selectUser, login, logout } from "./features/userSlice";
+import { auth } from "./firebase/firebase";
+import Home from "./pages/Home";
 
 function App() {
-  const [userData, setUserData] = useState({
-    token: undefined,
-    user: undefined,
-  });
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
-      if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        // user logged in
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+          })
+        );
+      } else {
+        // not logged in
+        dispatch(logout());
       }
-      const tokenResponse = await axios.post(
-        "http://localhost:5000/users/isTokenValid/",
-        null,
-        { headers: { "x-auth-token": token } }
-      );
-      if (tokenResponse.data) {
-        const userResponse = await axios.get("http://localhost:5000/users/", {
-          headers: { "x-auth-token": token },
-        });
-        setUserData({
-          token,
-          user: userResponse.data,
-        });
-      }
-    };
-
-    checkLoggedIn();
+    });
   }, []);
 
   return (
-    <div className="App">
-      <Router>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <Navigation />
-          <br />
-          {/* <Route path="/login" exact component={Login} /> */}
-          <Route path="/" exact component={Home} />
-          <Route path="/community" exact component={Community} />
-          <Route path="/profile" exact component={Profile} />
-          <Route path="/settings" exact component={Settings} />
-        </UserContext.Provider>
-      </Router>
+    <div className="app">
+      {!user ? (
+        <Login />
+      ) : (
+        <>
+          <Header />
+          <Switch>
+            <Route path="/" component={Home} exact />
+          </Switch>
+        </>
+      )}
     </div>
   );
 }
