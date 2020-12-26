@@ -7,13 +7,17 @@ import "../styles/Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [emailLogin, setEmailLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
   const [name, setName] = useState("");
+  const [registerScreen, setRegisterScreen] = useState(false);
   const dispatch = useDispatch();
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault();
     if (!name) return alert("Please enter a full name.");
-
+    else if (!email) return alert("Please enter your email.");
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userAuth) => {
@@ -29,7 +33,8 @@ function Login() {
                 displayName: name,
               })
             );
-          });
+          })
+          .catch((err) => alert(err));
       })
       .catch((error) => alert(error));
   };
@@ -37,7 +42,7 @@ function Login() {
   const loginToApp = (e) => {
     e.preventDefault();
     auth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(emailLogin, passwordLogin)
       .then((userAuth) => {
         dispatch(
           login({
@@ -50,38 +55,80 @@ function Login() {
       .catch((err) => alert(err));
   };
 
+  const showRegister = () => {
+    setRegisterScreen(true);
+  };
+
+  const showLogin = () => {
+    setRegisterScreen(false);
+  };
+
   return (
     <div className="login">
       <img
         src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
         alt=""
       />
-      <form action="">
-        <input
-          type="text"
-          placeholder="Full Name (required if registering)"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" onClick={loginToApp}>
-          Sign In
-        </button>
-      </form>
-      <p>
-        Don't have an account?{" "}
-        <span className="login__register" onClick={register}>
-          Register
-        </span>
-      </p>
+      {registerScreen ? (
+        <>
+          <h1>Register</h1>
+          <form action="">
+            <input
+              value={name}
+              type="text"
+              placeholder="Enter Full Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              value={email}
+              type="email"
+              placeholder="Email Address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              value={password}
+              type="password"
+              placeholder="Set Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={register}>Register Now</button>
+          </form>
+        </>
+      ) : (
+        <>
+          <h1>Sign In</h1>
+          <form action="">
+            <input
+              value={emailLogin}
+              type="email"
+              placeholder="Email Address"
+              onChange={(e) => setEmailLogin(e.target.value)}
+            />
+            <input
+              value={passwordLogin}
+              type="password"
+              placeholder="Enter Password"
+              onChange={(e) => setPasswordLogin(e.target.value)}
+            />
+            <button onClick={loginToApp}>Sign In</button>
+          </form>
+        </>
+      )}
+      {registerScreen ? (
+        <p>
+          already have an account?{" "}
+          <span className="login__register" onClick={showLogin}>
+            Sign In
+          </span>
+        </p>
+      ) : (
+        <p>
+          Not a member?{" "}
+          <span className="login__register" onClick={showRegister}>
+            Register Now
+          </span>
+        </p>
+      )}
     </div>
   );
 }
