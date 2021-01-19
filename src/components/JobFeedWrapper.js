@@ -6,12 +6,14 @@ import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 import "../App.css";
 
-function Home() {
+function JobFeedWrapper() {
   return (
     <div className="app__body">
-      <h1>Welcome to Restart Jobs</h1>
+      <Sidebar />
+      <JobFeed />
+      {/* <Widgets /> */}
     </div>
   );
 }
 
-export default Home;
+export default JobFeedWrapper;
