@@ -66,7 +66,7 @@ function JobFeed() {
         {jobposts.map(
           ({
             id,
-            data: { company, role, description, deadlineDate, postedDate },
+            data: { company, role, description, deadlineDate, postedDate, location },
           }) => (
             <JobPost
               key={id}
@@ -75,6 +75,7 @@ function JobFeed() {
               description={description}
               deadlineDate={deadlineDate}
               postedDate={postedDate}
+              location={location}
             />
           )
         )}

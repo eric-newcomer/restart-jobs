@@ -8,6 +8,12 @@
    display: flex;
    margin-bottom: 10px;
 }
+.post__header > img {
+   width: 100px;
+   height: 100%;
+   margin-right: 10px;
+   border-radius: 10px;
+}
 .post__info {
    margin-left: 10px;
 }
