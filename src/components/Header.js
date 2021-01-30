@@ -1,5 +1,4 @@
 import React from "react";
-import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
 import ForumIcon from '@material-ui/icons/Forum';
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
