@@ -1,0 +1,10 @@
+.forum {
+   margin-top: 25px;
+   width: 60%;
+   text-align: center;
+}
+
+.forum > p {
+   margin-top: 25px;
+   font-size: 20px;
+}

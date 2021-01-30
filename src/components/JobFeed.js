@@ -32,13 +32,7 @@ function JobFeed() {
   const sendPost = (e) => {
     e.preventDefault();
 
-    db.collection("jobposts").add({
-      name: user.displayName,
-      description: user.email,
-      message: input,
-      photoUrl: user.photoUrl || "",
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    db.collection("jobposts").where("company", "==", input);
 
     setInput("");
   };

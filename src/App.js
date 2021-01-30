@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from 'react-router-dom';
 
 import "./App.css";
-import Feed from "./components/Feed";
 import Header from "./components/Header";
+import Calendar from "./components/Calendar";
+import Forum from "./components/Forum";
 import Widgets from "./components/Widgets";
 import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
 import { selectUser, login, logout } from "./features/userSlice";
 import { auth } from "./firebase/firebase";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 import JobFeedWrapper from "./components/JobFeedWrapper";
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/opportunities" component={JobFeedWrapper} />
+            <Route path="/calendar" component={Calendar} />
+            <Route path="/forum" component={Forum} />
           </Switch>
         </>
       )}

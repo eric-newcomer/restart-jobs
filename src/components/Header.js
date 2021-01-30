@@ -26,7 +26,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header__left">
-        <h2>Restart Jobs</h2>
+        <h2>Restart Jobs 🌳</h2>
         {/* <img
           src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
           alt=""
