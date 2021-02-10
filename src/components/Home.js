@@ -55,7 +55,7 @@ function Home() {
       </Button>
       <Button
         variant="contained"
-        color=""
+        color="primary"
         size="large"
         className={classes.button}
         startIcon={<ForumIcon />}
@@ -65,7 +65,7 @@ function Home() {
       </Button>
       <Button
         variant="contained"
-        color=""
+        color="secondary"
         size="large"
         className={classes.button}
         startIcon={<AccountCircleIcon />}

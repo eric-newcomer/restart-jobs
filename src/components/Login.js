@@ -65,13 +65,14 @@ function Login() {
 
   return (
     <div className="login">
-      <img
+      <h1>Restart Jobs 🌳</h1>
+      {/* <img
         src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
         alt=""
-      />
+      /> */}
       {registerScreen ? (
         <>
-          <h1>Register</h1>
+          <h2>Register</h2>
           <form action="">
             <input
               value={name}
@@ -96,7 +97,7 @@ function Login() {
         </>
       ) : (
         <>
-          <h1>Sign In</h1>
+          <h2>Sign In</h2>
           <form action="">
             <input
               value={emailLogin}
