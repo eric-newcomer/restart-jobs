@@ -6,6 +6,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Calendar from "./components/Calendar";
 import Forum from "./components/Forum";
+import Profile from "./components/Profile";
+import Services from "./components/Services";
 import Widgets from "./components/Widgets";
 import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
@@ -48,6 +50,8 @@ function App() {
             <Route path="/opportunities" component={JobFeedWrapper} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/forum" component={Forum} />
+            <Route path="/services" component={Services} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </>
       )}

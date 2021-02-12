@@ -1,11 +1,12 @@
 import React from "react";
 import HomeIcon from "@material-ui/icons/Home";
-import ForumIcon from '@material-ui/icons/Forum';
+import ForumIcon from "@material-ui/icons/Forum";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
+import GroupIcon from '@material-ui/icons/Group';
 import ChatIcon from "@material-ui/icons/Chat";
-import EventIcon from '@material-ui/icons/Event';
+import EventIcon from "@material-ui/icons/Event";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import "../styles/Header.css";
 import HeaderOptions from "./HeaderOptions";
@@ -30,24 +31,32 @@ function Header() {
           src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
           alt=""
         /> */}
-        
-        <Link to="/" style={{ textDecoration: 'none' }}><HeaderOptions Icon={HomeIcon} title="Home" /></Link>
-        <Link to="/opportunities" style={{ textDecoration: 'none' }}><HeaderOptions Icon={BusinessCenterIcon} title="Opportunities" /></Link>
-        <Link to="/calendar" style={{ textDecoration: 'none' }}><HeaderOptions Icon={EventIcon} title="Calendar" /></Link>
-        <Link to="/forum" style={{ textDecoration: 'none' }}><HeaderOptions Icon={ForumIcon} title="Forum" /></Link>
+
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={HomeIcon} title="Home" />
+        </Link>
+        <Link to="/opportunities" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={BusinessCenterIcon} title="Opportunities" />
+        </Link>
+        <Link to="/calendar" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={EventIcon} title="Calendar" />
+        </Link>
+        <Link to="/forum" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={ForumIcon} title="Forum" />
+        </Link>
+        <Link to="/services" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={GroupIcon} title="Services" />
+        </Link>
       </div>
 
       <div className="header__right">
-        
-        <Link to="profile" style={{ textDecoration: 'none' }}><HeaderOptions
-          avatar="https://avatars2.githubusercontent.com/u/20120289?s=460&u=bd9cc7c182ebfd45566b8f5e5b6025980a5fb8d1&v=4"
-          title="Profile"
-        /></Link>
-        <HeaderOptions
-          Icon={ExitToApp}
-          title="Logout"
-          onClick={logoutOfApp}
-        />
+        <Link to="profile" style={{ textDecoration: "none" }}>
+          <HeaderOptions
+            avatar="https://avatars2.githubusercontent.com/u/20120289?s=460&u=bd9cc7c182ebfd45566b8f5e5b6025980a5fb8d1&v=4"
+            title="Profile"
+          />
+        </Link>
+        <HeaderOptions Icon={ExitToApp} title="Logout" onClick={logoutOfApp} />
       </div>
     </div>
   );
