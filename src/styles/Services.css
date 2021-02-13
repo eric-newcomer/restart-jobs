@@ -5,9 +5,8 @@
    text-align: center;
 }
 
-.services > p {
-   margin-top: 25px;
-   font-size: 20px;
+.services > h3 {
+   margin-top: 20px;
 }
 
 .services > img {
