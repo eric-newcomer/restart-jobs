@@ -16,6 +16,7 @@ function Calendar() {
           height="600"
           frameBorder="0"
           scrolling="no"
+          title="eventsCalendar"
         />
       </div>
     </div>

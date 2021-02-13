@@ -1,9 +1,7 @@
 import React, { forwardRef } from "react";
-import { Avatar } from "@material-ui/core";
 import LaunchIcon from '@material-ui/icons/Launch';
 import GradeIcon from '@material-ui/icons/Grade';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 
 import "../styles/Post.css";
 import InputOption from "./InputOption";
@@ -13,7 +11,7 @@ const JobPost = forwardRef(({ company, role, description, location, photoUrl, de
     <div ref={ref} className="post">
       <div class="post__header">
         {/* TODO: use photoUrl */}
-        <img src="https://blog.hubspot.com/hubfs/image8-2.jpg" />
+        <img src="https://blog.hubspot.com/hubfs/image8-2.jpg" alt="google-logo"/>
         <div class="post__info">
           <h2>{role}</h2>
           <h3>{company}</h3>

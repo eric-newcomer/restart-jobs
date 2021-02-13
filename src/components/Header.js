@@ -3,19 +3,18 @@ import HomeIcon from "@material-ui/icons/Home";
 import ForumIcon from "@material-ui/icons/Forum";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import GroupIcon from '@material-ui/icons/Group';
-import ChatIcon from "@material-ui/icons/Chat";
 import EventIcon from "@material-ui/icons/Event";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../styles/Header.css";
 import HeaderOptions from "./HeaderOptions";
-import { logout, selectUser } from "../features/userSlice";
+import { logout } from "../features/userSlice";
 import { auth } from "../firebase/firebase";
 import { ExitToApp } from "@material-ui/icons";
 
 function Header() {
-  const user = useSelector(selectUser);
+  //const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {

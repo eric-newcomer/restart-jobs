@@ -7,7 +7,7 @@ function Forum() {
   return (
     <div className="forum">
       <h1>Restart Jobs Community Forum</h1>
-      <img src={src} />
+      <img src={src} alt="forum"/>
       <p>
         The Restart Jobs Community Forum is a place for clients of Restorative
         Partners to connect, give advice, and share opportunities that others
@@ -15,7 +15,7 @@ function Forum() {
         can be found at the link below:
       </p>
       <p>
-      <a href="https://www.facebook.com/" target="_blank">
+      <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" >
         Link to Community Forum
       </a>
       </p>

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
-import ImageIcon from "@material-ui/icons/Image";
-import firebase from "firebase";
 import { useSelector } from "react-redux";
 import FlipMove from "react-flip-move";
 
 import "../styles/Feed.css";
-import InputOption from "./InputOption";
 import JobPost from "./JobPost";
 import { db } from "../firebase/firebase";
 import { selectUser } from "../features/userSlice";

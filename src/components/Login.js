@@ -66,10 +66,6 @@ function Login() {
   return (
     <div className="login">
       <h1>Restart Jobs 🌳</h1>
-      {/* <img
-        src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
-        alt=""
-      /> */}
       {registerScreen ? (
         <>
           <h2>Register</h2>

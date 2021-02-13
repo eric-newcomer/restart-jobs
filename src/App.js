@@ -8,8 +8,6 @@ import Calendar from "./components/Calendar";
 import Forum from "./components/Forum";
 import Profile from "./components/Profile";
 import Services from "./components/Services";
-import Widgets from "./components/Widgets";
-import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
 import { selectUser, login, logout } from "./features/userSlice";
 import { auth } from "./firebase/firebase";

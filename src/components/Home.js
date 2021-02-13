@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from '@material-ui/icons/Search';
 import TodayIcon from '@material-ui/icons/Today';
