@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
 import { auth } from "../firebase/firebase";
 
+import rp_300dpi from "../img/rp_300dpi.png";
 import "../styles/Login.css";
 
 function Login() {
@@ -65,7 +66,8 @@ function Login() {
 
   return (
     <div className="login">
-      <h1>Restart Jobs 🌳</h1>
+      {/* <h1>Restart Jobs 🌳</h1> */}
+      <img src={rp_300dpi} alt="main_logo" />
       {registerScreen ? (
         <>
           <h2>Register</h2>

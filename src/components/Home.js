@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import SearchIcon from '@material-ui/icons/Search';
-import TodayIcon from '@material-ui/icons/Today';
-import ForumIcon from '@material-ui/icons/Forum';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Link } from 'react-router-dom';
+import SearchIcon from "@material-ui/icons/Search";
+import TodayIcon from "@material-ui/icons/Today";
+import ForumIcon from "@material-ui/icons/Forum";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { Link } from "react-router-dom";
 
 import "../styles/Home.css";
 
@@ -38,17 +38,19 @@ function Home() {
         size="large"
         className={classes.button}
         startIcon={<SearchIcon />}
-        component={Link} to={'/opportunities'}
+        component={Link}
+        to={"/opportunities"}
       >
         Search for Jobs
       </Button>
       <Button
         variant="contained"
-        color="secondary"
+        color="primary-light"
         size="large"
         className={classes.button}
         startIcon={<TodayIcon />}
-        component={Link} to={'/calendar'}
+        component={Link}
+        to={"/calendar"}
       >
         View Calendar Events
       </Button>
@@ -58,17 +60,19 @@ function Home() {
         size="large"
         className={classes.button}
         startIcon={<ForumIcon />}
-        component={Link} to={'/forum'}
+        component={Link}
+        to={"/forum"}
       >
         Community Forum
       </Button>
       <Button
         variant="contained"
-        color="secondary"
+        color=""
         size="large"
         className={classes.button}
         startIcon={<AccountCircleIcon />}
-        component={Link} to={'/profile'}
+        component={Link}
+        to={"/profile"}
       >
         Update Profile
       </Button>
