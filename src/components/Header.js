@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../styles/Header.css";
+import rp_300dpi from "../img/rp_300dpi.png";
 import HeaderOptions from "./HeaderOptions";
 import { logout } from "../features/userSlice";
 import { auth } from "../firebase/firebase";
@@ -25,11 +26,8 @@ function Header() {
   return (
     <div className="header">
       <div className="header__left">
-        <h2>Restart Jobs 🌳</h2>
-        {/* <img
-          src="https://avatars0.githubusercontent.com/u/70076380?s=200&v=4"
-          alt=""
-        /> */}
+        {/* <h2>Restart Jobs 🌳</h2> */}
+        <img src={rp_300dpi} alt="logo_main" />
 
         <Link to="/" style={{ textDecoration: "none" }}>
           <HeaderOptions Icon={HomeIcon} title="Home" />
