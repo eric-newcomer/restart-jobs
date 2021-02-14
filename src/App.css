@@ -1,13 +1,19 @@
+/*
+RP Colors:
+Yellow - #fbb177
+Black - #231f20
+*/
+
 .app {
    background-color: #f3f2ef;
    display:flex;
    flex-direction: column;
    align-items: center;
-   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  background-color: rgb(230, 230, 230);
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   color: #231f20;
+   background-color: rgb(230, 230, 230);
 }
 
 .app__body {
