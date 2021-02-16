@@ -40,13 +40,16 @@ function JobFeed() {
       );
   }, []);
 
+  const fixCaps = (inp) =>
+    inp[0].toUpperCase().concat(inp.slice(1).toLowerCase());
+
   const searchOps = (e) => {
     // Prevent searching empty input
     e.preventDefault();
-    
+
     // Query the database using "where"
     db.collection("jobposts")
-      .where("company", "==", input)
+      .where("company", "==", fixCaps(input))
       .orderBy("postedDate", "desc")
       .onSnapshot((snapshot) =>
         setJobposts(
@@ -80,13 +83,24 @@ function JobFeed() {
           </form>
         </div>
       </div>
-      { searchedInput != "" && searchedInput == input ? <h3>Showing results for "{input}"</h3> : <p></p>}
+      {searchedInput != "" && searchedInput == input ? (
+        <h3>Showing results for "{input}"</h3>
+      ) : (
+        <p></p>
+      )}
       {/* Posts */}
       <FlipMove>
         {jobposts.map(
           ({
             id,
-            data: { company, role, description, deadlineDate, postedDate, location },
+            data: {
+              company,
+              role,
+              description,
+              deadlineDate,
+              postedDate,
+              location,
+            },
           }) => (
             <JobPost
               key={id}
