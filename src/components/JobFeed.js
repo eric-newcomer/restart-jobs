@@ -11,9 +11,23 @@ import { selectUser } from "../features/userSlice";
 function JobFeed() {
   const user = useSelector(selectUser);
   const [input, setInput] = useState("");
+  const [searchedInput, setSearchedInput] = useState("");
   const [jobposts, setJobposts] = useState([]);
 
+  // db.collection("jobposts")
+  //     .orderBy("postedDate", "desc")
+  //     .onSnapshot((snapshot) =>
+  //       setJobposts(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           data: doc.data(),
+  //         }))
+  //       )
+  //     );
+
   useEffect(() => {
+    setInput("");
+    setSearchedInput("");
     db.collection("jobposts")
       .orderBy("postedDate", "desc")
       .onSnapshot((snapshot) =>
@@ -26,16 +40,30 @@ function JobFeed() {
       );
   }, []);
 
-  const sendPost = (e) => {
+  const searchOps = (e) => {
+    // Prevent searching empty input
     e.preventDefault();
-
-    db.collection("jobposts").where("company", "==", input);
-
-    setInput("");
+    
+    // Query the database using "where"
+    db.collection("jobposts")
+      .where("company", "==", input)
+      .orderBy("postedDate", "desc")
+      .onSnapshot((snapshot) =>
+        setJobposts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+    const copiedInput = input;
+    setSearchedInput(copiedInput);
+    //setInput("");
   };
 
   return (
     <div className="feed">
+      <h1>Opportunity Search</h1>
       <div class="feed__inputContainer">
         <div class="feed__input">
           <SearchIcon />
@@ -44,14 +72,15 @@ function JobFeed() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
-              placeholder="Search"
+              placeholder="Search all jobs"
             />
-            <button onClick={sendPost} type="submit">
+            <button onClick={searchOps} type="submit">
               Send
             </button>
           </form>
         </div>
       </div>
+      { searchedInput != "" && searchedInput == input ? <h3>Showing results for "{input}"</h3> : <p></p>}
       {/* Posts */}
       <FlipMove>
         {jobposts.map(

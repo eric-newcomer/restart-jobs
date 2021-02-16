@@ -24,9 +24,18 @@ function Sidebar() {
         <Avatar className="sidebar__avatar" >{user.displayName[0]}</Avatar>
         <h2>{user.displayName}</h2>
         <h4>{user.email}</h4>
+        <p>My name is {user.displayName} and I am interested in many things.</p>
       </div>
       <div class="sidebar__stats">
         <div class="sidebar__stat">
+          <p>Interests:</p>
+          <p>888</p>
+        </div>
+        <div class="sidebar__stat">
+          <p>Who's viewed you</p>
+          <p>888</p>
+        </div>
+        <div class="sidebar__stat">
           <p>Who's viewed you</p>
           <p>888</p>
         </div>
@@ -35,14 +44,12 @@ function Sidebar() {
           <p>888</p>
         </div>
       </div>
-      <div class="sidebar__bottom">
-        <p>Recent</p>
+      {/* <div class="sidebar__bottom">
+        <p>Interests</p>
         {recentItem("coding")}
         {recentItem("software")}
-        {recentItem("entrepreneurship")}
-        {recentItem("jobs")}
-        {recentItem("automotive")}
-      </div>
+        {recentItem("education")}
+      </div> */}
     </div>
   );
 }

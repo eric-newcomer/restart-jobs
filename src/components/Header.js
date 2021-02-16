@@ -2,20 +2,20 @@ import React from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import ForumIcon from "@material-ui/icons/Forum";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
-import GroupIcon from '@material-ui/icons/Group';
+import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "../styles/Header.css";
 import rp_300dpi from "../img/rp_300dpi.png";
 import HeaderOptions from "./HeaderOptions";
-import { logout } from "../features/userSlice";
+import { logout, selectUser } from "../features/userSlice";
 import { auth } from "../firebase/firebase";
 import { ExitToApp } from "@material-ui/icons";
 
 function Header() {
-  //const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
@@ -44,6 +44,7 @@ function Header() {
         <Link to="/services" style={{ textDecoration: "none" }}>
           <HeaderOptions Icon={GroupIcon} title="Services" />
         </Link>
+        {user.isAdmin === true ? <h1>user is admin</h1> : <p>{user.isAdmin}</p>}
       </div>
 
       <div className="header__right">
