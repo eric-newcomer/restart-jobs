@@ -13,6 +13,7 @@ import { selectUser, login, logout } from "./features/userSlice";
 import { auth } from "./firebase/firebase";
 import Home from "./components/Home";
 import JobFeedWrapper from "./components/JobFeedWrapper";
+import AddOpportunity from "./components/AddOpportunity";
 
 function App() {
   const user = useSelector(selectUser);
@@ -46,6 +47,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/opportunities" component={JobFeedWrapper} />
+            <Route path="/add-opportunity" component={AddOpportunity} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/forum" component={Forum} />
             <Route path="/services" component={Services} />

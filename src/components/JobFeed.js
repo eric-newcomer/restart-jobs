@@ -14,17 +14,6 @@ function JobFeed() {
   const [searchedInput, setSearchedInput] = useState("");
   const [jobposts, setJobposts] = useState([]);
 
-  // db.collection("jobposts")
-  //     .orderBy("postedDate", "desc")
-  //     .onSnapshot((snapshot) =>
-  //       setJobposts(
-  //         snapshot.docs.map((doc) => ({
-  //           id: doc.id,
-  //           data: doc.data(),
-  //         }))
-  //       )
-  //     );
-
   useEffect(() => {
     setInput("");
     setSearchedInput("");
