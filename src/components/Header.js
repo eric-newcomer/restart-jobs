@@ -4,6 +4,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
+import AddIcon from '@material-ui/icons/Add';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -44,7 +45,10 @@ function Header() {
         <Link to="/services" style={{ textDecoration: "none" }}>
           <HeaderOptions Icon={GroupIcon} title="Services" />
         </Link>
-        {user.isAdmin === true ? <h1>user is admin</h1> : <p>{user.isAdmin}</p>}
+        <Link to="/add-opportunity" style={{ textDecoration: "none" }}>
+          <HeaderOptions Icon={AddIcon} title="Add Opportunity" />
+        </Link>
+        {/* {user.isAdmin === true ? <h1>user is admin</h1> : <p>{user.isAdmin}</p>} */}
       </div>
 
       <div className="header__right">

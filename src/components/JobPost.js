@@ -11,7 +11,7 @@ const JobPost = forwardRef(({ company, role, description, location, photoUrl, de
     <div ref={ref} className="post">
       <div class="post__header">
         {/* TODO: use photoUrl */}
-        <img src="https://blog.hubspot.com/hubfs/image8-2.jpg" alt="google-logo"/>
+        <img src={photoUrl} alt="opportunity-logo"/>
         <div class="post__info">
           <h2>{role}</h2>
           <h3>{company}</h3>

@@ -8,6 +8,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 
 import "../styles/Home.css";
+import rp_icon_300dpi from "../img/rp_icon_300dpi.png";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -17,21 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   const classes = useStyles();
-
+  const bannerImg =
+    "https://pictures.alignable.com/eyJidWNrZXQiOiJhbGlnbmFibGV3ZWItcHJvZHVjdGlvbiIsImtleSI6ImJ1c2luZXNzZXMvYmFubmVycy9vcmlnaW5hbC8xMDU4ODY2LzE0OTkyNjcxODVfMTU0NDIyOTRfMTg0NTc4MzY0NTYzNzIwN183MjU4MDEwNjg1NjIzNDkyNDhfbi5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjExMjAsImhlaWdodCI6MzA0fX19";
   return (
     <div className="home">
       <h1>Welcome to Restart Jobs!</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed
-        laoreet quam. Phasellus nec ipsum congue, laoreet ex et, suscipit
-        tellus. Nulla facilisi. Aliquam sed eros nec felis aliquam euismod eget
-        vel nisi. Donec aliquet dignissim mauris pellentesque facilisis.
-        Maecenas tincidunt odio vitae tortor dapibus tristique. Suspendisse
-        potenti. Vestibulum ante ipsum primis in faucibus orci luctus et
-        ultrices posuere cubilia curae; Mauris tincidunt mi eget turpis semper,
-        in vulputate neque fringilla. Ut tellus arcu, suscipit vel ultrices
-        vitae, sollicitudin at lectus. Integer sed posuere justo.
-      </p>
+      <img src={rp_icon_300dpi} alt="banner-main" />
       <Button
         variant="contained"
         color="primary"
