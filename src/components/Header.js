@@ -4,7 +4,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from "@material-ui/icons/Add";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -27,9 +27,9 @@ function Header() {
   return (
     <div className="header">
       <div className="header__left">
-        {/* <h2>Restart Jobs 🌳</h2> */}
-        <img src={rp_300dpi} alt="logo_main" />
-
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <img src={rp_300dpi} alt="logo_main" className="header__img"/>
+        </Link>
         <Link to="/" style={{ textDecoration: "none" }}>
           <HeaderOptions Icon={HomeIcon} title="Home" />
         </Link>

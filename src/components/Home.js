@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import TodayIcon from "@material-ui/icons/Today";
 import ForumIcon from "@material-ui/icons/Forum";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import GroupIcon from "@material-ui/icons/Group";
 import { Link } from "react-router-dom";
 
 import "../styles/Home.css";
@@ -28,66 +28,33 @@ function Home() {
     <div className="home">
       <h1>Welcome to Restart Jobs!</h1>
       <img src={rp_icon_300dpi} alt="banner-main" />
-      <div class="home__row">
-        <div class="home__button">
-          <h3>Search for Jobs</h3>
-        </div>
-        <div class="home__button">
-          
-          <h3>View Calendar Events</h3>
-        </div>
-        {/* <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          className={classes.button}
-          startIcon={<SearchIcon />}
-          component={Link}
-          to={"/opportunities"}
-        >
-          Search for Jobs
-        </Button> */}
-        {/* <Button
-          variant="contained"
-          color="primary-light"
-          size="large"
-          className={classes.button}
-          startIcon={<TodayIcon />}
-          component={Link}
-          to={"/calendar"}
-        >
-          View Calendar Events
-        </Button> */}
+      <div className="home__row">
+        <Link to="/opportunities" style={{ textDecoration: "none" }}>
+          <div className="home__button">
+            <SearchIcon className="home__button_icon" />
+            <h3>Search for Jobs</h3>
+          </div>
+        </Link>
+        <Link to="/calendar" style={{ textDecoration: "none" }}>
+          <div className="home__button">
+            <TodayIcon className="home__button_icon" />
+            <h3>View Calendar Events</h3>
+          </div>
+        </Link>
       </div>
-      <div class="home__row">
-      <div class="home__button">
-          <h3>Community Forum</h3>
-        </div>
-        <div class="home__button">
-          <h3>Services Page</h3>
-        </div>
-        {/* <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          className={classes.button}
-          startIcon={<ForumIcon />}
-          component={Link}
-          to={"/forum"}
-        >
-          Community Forum
-        </Button>
-        <Button
-          variant="contained"
-          color=""
-          size="large"
-          className={classes.button}
-          startIcon={<AccountCircleIcon />}
-          component={Link}
-          to={"/profile"}
-        >
-          Update Profile
-        </Button> */}
+      <div className="home__row">
+        <Link to="/forum" style={{ textDecoration: "none" }}>
+          <div className="home__button">
+            <ForumIcon className="home__button_icon" />
+            <h3>Community Forum</h3>
+          </div>
+        </Link>
+        <Link to="/services" style={{ textDecoration: "none" }}>
+          <div className="home__button">
+            <GroupIcon className="home__button_icon" />
+            <h3>Services Page</h3>
+          </div>
+        </Link>
       </div>
     </div>
   );

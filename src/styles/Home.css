@@ -23,19 +23,29 @@
 }
 .home__button {
    height: 100px;
-   line-height: 100px;
+   /* line-height: 100px; */
    width: 40vw;
    border-radius: 10px;
    background-color: #fbb117;
-   /* background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/fe/ef/carlsbad.jpg?w=1100&h=600&s=1'); */
-   background-repeat: no-repeat;
-   background-position: center;
    margin-left: 5px;
    margin-right: 5px;
    margin-top: 5px;
    margin-bottom: 5px;
    color: white;
+   /* white-space: nowrap; */
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+.home__button > h3 {
+   margin-bottom: 0;
+}
+.home__button_icon {
+   padding-right: 10px;
 }
 .home__button:hover {
    background-color: #c98f12;
+   transition: all .4s ease;
+   -webkit-transition: all .4s ease;
 }
