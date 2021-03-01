@@ -9,7 +9,7 @@ import { db } from "../firebase/firebase";
 import { selectUser } from "../features/userSlice";
 
 function JobFeed() {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   const [input, setInput] = useState("");
   const [searchedInput, setSearchedInput] = useState("");
   const [jobposts, setJobposts] = useState([]);
@@ -89,6 +89,7 @@ function JobFeed() {
               deadlineDate,
               postedDate,
               location,
+              photoUrl
             },
           }) => (
             <JobPost
@@ -99,6 +100,7 @@ function JobFeed() {
               deadlineDate={deadlineDate}
               postedDate={postedDate}
               location={location}
+              photoUrl={photoUrl}
             />
           )
         )}

@@ -7,6 +7,7 @@ import "../styles/Post.css";
 import InputOption from "./InputOption";
 
 const JobPost = forwardRef(({ company, role, description, location, photoUrl, deadlineDate, postedDate, salary }, ref) => {
+  
   return (
     <div ref={ref} className="post">
       <div class="post__header">
