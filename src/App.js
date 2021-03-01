@@ -39,22 +39,18 @@ function App() {
 
   return (
     <div className="app">
-      {!user ? (
-        <Login />
-      ) : (
         <>
-          <Header />
           <Switch>
+            <Route path="/login" component={Login} />
             <Route path="/" component={Home} exact />
             <Route path="/opportunities" component={JobFeedWrapper} />
-            <Route path="/add-opportunity" component={AddOpportunity} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/forum" component={Forum} />
             <Route path="/services" component={Services} />
+            <Route path="/add-opportunity" component={AddOpportunity} />
             <Route path="/profile" component={Profile} />
           </Switch>
         </>
-      )}
     </div>
   );
 }

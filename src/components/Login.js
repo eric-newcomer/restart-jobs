@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
 import { auth } from "../firebase/firebase";
-
+import { useHistory } from "react-router-dom";
 import rp_300dpi from "../img/rp_300dpi.png";
 import "../styles/Login.css";
 
@@ -14,6 +14,8 @@ function Login() {
   const [name, setName] = useState("");
   const [registerScreen, setRegisterScreen] = useState(false);
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const register = (e) => {
     e.preventDefault();
@@ -52,6 +54,7 @@ function Login() {
             displayName: userAuth.user.displayName,
           })
         );
+        history.push("/");
       })
       .catch((err) => alert(err));
   };
@@ -113,7 +116,7 @@ function Login() {
           </form>
         </>
       )}
-      {registerScreen ? (
+      {/* {registerScreen ? (
         <p>
           already have an account?{" "}
           <span className="login__register" onClick={showLogin}>
@@ -127,7 +130,7 @@ function Login() {
             Register Now
           </span>
         </p>
-      )}
+      )} */}
     </div>
   );
 }
