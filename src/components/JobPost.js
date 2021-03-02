@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import LaunchIcon from "@material-ui/icons/Launch";
 import DeleteIcon from "@material-ui/icons/Delete";
-import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import InfoIcon from "@material-ui/icons/Info";
 import firebase from "firebase";
 
@@ -19,10 +18,10 @@ const formatDate = (date) => {
   return new_date;
 };
 
-
 const JobPost = forwardRef(
   (
     {
+      key,
       company,
       role,
       description,
@@ -35,7 +34,18 @@ const JobPost = forwardRef(
     ref
   ) => {
     const p_date = formatDate(postedDate);
-    console.log("ref: ", ref);
+    console.log("key: ", key);
+    const handleDelete = (e) => {
+      db.collection("jobposts")
+        .doc(key)
+        .delete()
+        .then(() => {
+          alert("Job successfully deleted");
+        })
+        .catch((error) => {
+          alert("Error removing document: ", error);
+        });
+    };
     return (
       <div ref={ref} className="post">
         <div class="post__header">
@@ -64,7 +74,7 @@ const JobPost = forwardRef(
                 <InputOption Icon={LaunchIcon} title="Apply" color="gray" />
               </a>
               <InputOption Icon={InfoIcon} title="More Info" color="gray" />
-              <a onClick={()=>alert("hi!")}>
+              <a onClick={handleDelete}>
                 <InputOption Icon={DeleteIcon} title="Delete" color="red" />
               </a>
             </>
