@@ -14,6 +14,8 @@ function JobFeed() {
   const [searchedInput, setSearchedInput] = useState("");
   const [jobposts, setJobposts] = useState([]);
 
+  const user = useSelector(selectUser);
+
   useEffect(() => {
     setInput("");
     setSearchedInput("");
@@ -89,7 +91,8 @@ function JobFeed() {
               deadlineDate,
               postedDate,
               location,
-              photoUrl
+              photoUrl,
+              applicationLink,
             },
           }) => (
             <JobPost
@@ -101,6 +104,8 @@ function JobFeed() {
               postedDate={postedDate}
               location={location}
               photoUrl={photoUrl}
+              applicationLink={applicationLink}
+              user={user}
             />
           )
         )}

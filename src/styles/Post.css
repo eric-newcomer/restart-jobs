@@ -9,7 +9,7 @@
    margin-bottom: 10px;
 }
 .post__header > img {
-   width: 100px;
+   max-width: 100px;
    height: 100%;
    margin-right: 10px;
    border-radius: 10px;
@@ -18,16 +18,17 @@
    margin-left: 10px;
 }
 .post__info > p {
-   font-size: 12px;
+   font-size: 14px;
    color: gray;
 }
 .post__body {
    overflow-wrap: anywhere;
+   margin-left: 120px;
 }
 .post__body > h2 {
    font-size: 15px;
 }
 .post__buttons {
    display: flex;
-   /* justify-content: space-evenly; */
+   justify-content: space-between;
 }
