@@ -13,6 +13,7 @@ function JobFeed() {
   const [input, setInput] = useState("");
   const [searchedInput, setSearchedInput] = useState("");
   const [jobposts, setJobposts] = useState([]);
+  const [searchState, setSearchState] = useState("role");
 
   const user = useSelector(selectUser);
 
@@ -31,28 +32,56 @@ function JobFeed() {
       );
   }, []);
 
-  const fixCaps = (inp) =>
-    inp[0].toUpperCase().concat(inp.slice(1).toLowerCase());
+  const fixCaps = (inp) => {
+    if (inp.length == 0) return "";
+    const res = inp[0].toUpperCase().concat(inp.slice(1).toLowerCase());
+    console.log(res);
+    return res;
+  };
 
   const searchOps = (e) => {
     // Prevent searching empty input
     e.preventDefault();
-
-    // Query the database using "where"
-    db.collection("jobposts")
-      .where("company", "==", fixCaps(input))
-      .orderBy("postedDate", "desc")
-      .onSnapshot((snapshot) =>
-        setJobposts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          }))
-        )
-      );
+    if (searchState === "organization") {
+      // Query the database using "where"
+      db.collection("jobposts")
+        .where("company", "==", fixCaps(input))
+        .orderBy("postedDate", "desc")
+        .onSnapshot((snapshot) =>
+          setJobposts(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          )
+        );
+    } else {
+      // state == role
+      // Query the database using "where"
+      db.collection("jobposts")
+        .where("role", "==", fixCaps(input))
+        .orderBy("postedDate", "desc")
+        .onSnapshot((snapshot) =>
+          setJobposts(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          )
+        );
+    }
     const copiedInput = input;
     setSearchedInput(copiedInput);
     //setInput("");
+  };
+
+  const handleState = () => {
+    console.log("State change!");
+    if (searchState === "role") {
+      setSearchState("organization");
+    } else {
+      setSearchState("role");
+    }
   };
 
   return (
@@ -66,19 +95,27 @@ function JobFeed() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
-              placeholder="Search all jobs"
+              placeholder="Search all opportunities"
             />
+            <select name="states" id="states" onChange={handleState}>
+              <option value="role">role</option>
+              <option value="organization">organization</option>
+            </select>
             <button onClick={searchOps} type="submit">
-              Send
+              Search
             </button>
           </form>
         </div>
+        {/* <button onClick={setSearchState('role')} /> */}
       </div>
       {searchedInput != "" && searchedInput == input ? (
         <h3>Showing results for "{input}"</h3>
       ) : (
         <p></p>
       )}
+      {/* <>
+        <h1>Search State: {searchState}</h1>
+      </> */}
       {/* Posts */}
       <FlipMove>
         {jobposts.map(

@@ -98,12 +98,12 @@ function Header() {
             </div>
 
             <div className="header__right">
-              <Link to="profile" style={{ textDecoration: "none" }}>
+              {/* <Link to="profile" style={{ textDecoration: "none" }}>
                 <HeaderOptions
                   avatar="https://avatars2.githubusercontent.com/u/20120289?s=460&u=bd9cc7c182ebfd45566b8f5e5b6025980a5fb8d1&v=4"
                   title="Profile"
                 />
-              </Link>
+              </Link> */}
               <HeaderOptions
                 Icon={ExitToApp}
                 title="Logout"

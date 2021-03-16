@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/Services.css";
+import reentry_qr_code from "../img/reentry_qr_code.png";
 import Header from "../components/Header";
 
 function Services() {
@@ -10,61 +11,22 @@ function Services() {
     <>
       <Header />
       <div className="services">
-        <h1>Restorative Partners Reentry Resources</h1>
-        <img src={src} alt="services" />
+        <h1>Reentry Resources</h1>
+        <img src={reentry_qr_code} alt="qr_code" />
         <p>
-          The following resources come from Restorative Partners' reentry
-          resources page.
+          Scan the QR code above or click the link below to see Restorative
+          Partners' Reentry Resources!
         </p>
-        <h3>SLO County Probation Department - Adult Services</h3>
-        <p>1730 Bishop Street, San Luis Obispo, CA 93401</p>
-        <p>(805) 781-5300</p>
-        <p>Hours: M-F 8am-5pm (excluding holidays)</p>
-        <p>
+        <h3>
           <a
-            href="https://www.slocounty.ca.gov/Departments/Probation"
+            href="https://restorativepartners.org/reentry-resources/"
             target="_blank"
             rel="noreferrer"
           >
-            https://www.slocounty.ca.gov/Departments/Probation
+            https://restorativepartners.org/reentry-resources/
           </a>
-        </p>
-
-        <h3>SLO County Probation Department - Juvenile Services Center</h3>
-        <p>1065 Kansas Avenue, San Luis Obispo, CA 93401</p>
-        <p>(805) 781-5352</p>
-        <p>Hours: M-F 8am-5pm (excluding holidays)</p>
-        <p>
-          <a
-            href="https://www.slocounty.ca.gov/Departments/Probation"
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://www.slocounty.ca.gov/Departments/Probation
-          </a>
-        </p>
-
-        <h3>SLO County Probation Department - Juvenile Hall</h3>
-        <p>1065 Kansas Avenue, San Luis Obispo, CA 93401</p>
-        <p>(805) 781-5389</p>
-        <p>
-          <a
-            href="https://www.slocounty.ca.gov/Departments/Probation"
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://www.slocounty.ca.gov/Departments/Probation
-          </a>
-        </p>
-
-        <h3>Parole/CDCR</h3>
-        <p>3232 S. Higuera Street, #102, San Luis Obispo, CA 93401</p>
-        <p>(805) 549-3251</p>
-        <p>
-          <a href="https://www.cdcr.ca.gov/" target="_blank" rel="noreferrer">
-            https://www.cdcr.ca.gov/
-          </a>
-        </p>
+        </h3>
+        
       </div>
     </>
   );

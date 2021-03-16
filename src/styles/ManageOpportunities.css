@@ -1,0 +1,12 @@
+.manage {
+   margin-top: 25px;
+   margin-bottom: 25px;
+   width: 80%;
+   text-align: center;
+}
+
+.manage > table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   background-color: white;
+}

@@ -34,7 +34,6 @@ const JobPost = forwardRef(
     ref
   ) => {
     const p_date = formatDate(postedDate);
-    console.log("key: ", key);
     const handleDelete = (e) => {
       db.collection("jobposts")
         .doc(key)
