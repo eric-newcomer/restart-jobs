@@ -17,7 +17,6 @@ export const PostRow = ({ id, company, role, location, postedDate }) => {
 
   const goToEdit = (e) => {
     e.preventDefault();
-    console.log("ID: ", id);
     const jobpost = db
       .collection("jobposts")
       .doc(id.toString())
@@ -26,9 +25,24 @@ export const PostRow = ({ id, company, role, location, postedDate }) => {
         console.log(jp.data());
       })
       .catch((err) => {
-        console.log("ERROR");
+        console.error("Error: ", err);
       });
     history.push(`/edit/${id}`);
+  };
+
+  const goToDelete = (e) => {
+    e.preventDefault();
+    const jobpost = db
+      .collection("jobposts")
+      .doc(id.toString())
+      .get()
+      .then((jp) => {
+        console.log(jp.data());
+      })
+      .catch((err) => {
+        console.error("Error: ", err);
+      });
+    history.push(`/delete/${id}`);
   };
 
   return (
@@ -41,8 +55,8 @@ export const PostRow = ({ id, company, role, location, postedDate }) => {
         <TableCell align="right">{role}</TableCell>
         <TableCell align="right">{location}</TableCell>
         <TableCell align="right">
-          <Button onClick={goToEdit}>Edit</Button>
-          <Button>Delete</Button>
+          <Button style={{backgroundColor: "gray", color: "white"}} onClick={goToEdit}>Edit</Button>
+          <Button style={{backgroundColor: "red", color: "white"}} onClick={goToDelete}>Delete</Button>
         </TableCell>
       </TableRow>
     </>

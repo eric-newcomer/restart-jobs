@@ -5,6 +5,7 @@ import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import GroupIcon from "@material-ui/icons/Group";
 import EventIcon from "@material-ui/icons/Event";
 import AddIcon from "@material-ui/icons/Add";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
@@ -90,6 +91,12 @@ function Header() {
               </Link>
               <Link to="/services" style={{ textDecoration: "none" }}>
                 <HeaderOptions Icon={GroupIcon} title="Services" />
+              </Link>
+              <Link to="/manage" style={{ textDecoration: "none" }}>
+                <HeaderOptions
+                  Icon={AssignmentIcon}
+                  title="Manage Opportunities"
+                />
               </Link>
               <Link to="/add-opportunity" style={{ textDecoration: "none" }}>
                 <HeaderOptions Icon={AddIcon} title="Add Opportunity" />
