@@ -5,6 +5,10 @@
    text-align: center;
 }
 
+.manage > h1 {
+   margin-bottom: 25px;
+}
+
 .manage > table, th, td {
    border: 1px solid black;
    border-collapse: collapse;

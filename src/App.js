@@ -15,6 +15,7 @@ import Home from "./components/Home";
 import JobFeedWrapper from "./components/JobFeedWrapper";
 import AddOpportunity from "./components/AddOpportunity";
 import ManageOpportunities from "./components/ManageOpportunities";
+import EditOpportunity from "./components/EditOpportunity";
 
 function App() {
   const user = useSelector(selectUser);
@@ -50,6 +51,7 @@ function App() {
             <Route path="/services" component={Services} />
             <Route path="/add-opportunity" component={AddOpportunity} />
             <Route path="/manage" component={ManageOpportunities} />
+            <Route path="/edit" component={EditOpportunity} />
           </Switch>
         </>
     </div>
